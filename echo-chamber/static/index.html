@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏛️ Chamber of Echoes - Web Interface</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🏛️ Chamber of Echoes</h1>
+                <p class="subtitle">A Magical Number Sequence Predictor</p>
+            </div>
+            <div class="status-badge" id="statusBadge">
+                <span class="status-dot"></span>
+                <span>Online</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Info Panel -->
+            <section class="info-panel">
+                <div class="legend">
+                    <h2>📖 The Legend</h2>
+                    <p>
+                        Deep within an ancient magical chamber lies a mysterious wall covered in glowing numbers.
+                        When you speak a sequence of numbers, the chamber echoes back with the next number in the pattern.
+                    </p>
+                    <p>
+                        Your task: Understand the patterns and predict the echoes!
+                    </p>
+                </div>
+
+                <!-- Quick Tips -->
+                <div class="quick-tips">
+                    <h3>✨ Quick Tips</h3>
+                    <ul>
+                        <li>Enter numbers separated by commas</li>
+                        <li>The chamber recognizes arithmetic progressions</li>
+                        <li>All echoes are stored in the chamber's memory</li>
+                        <li>Try examples to see how it works</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Input Section -->
+            <section class="input-section">
+                <h2>🔮 Ask the Chamber</h2>
+                <form id="sequenceForm">
+                    <div class="form-group">
+                        <label for="sequenceInput">Enter your sequence:</label>
+                        <input
+                            type="text"
+                            id="sequenceInput"
+                            placeholder="e.g., 3, 6, 9, 12"
+                            autocomplete="off"
+                        >
+                        <small>Separate numbers with commas</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">✨ Predict</button>
+                </form>
+
+                <!-- Prediction Count -->
+                <div class="form-group">
+                    <label for="predictionCount">Predict multiple (optional):</label>
+                    <div class="prediction-control">
+                        <input
+                            type="number"
+                            id="predictionCount"
+                            min="1"
+                            max="20"
+                            value="1"
+                            placeholder="How many numbers?"
+                        >
+                        <button type="button" id="predictMultipleBtn" class="btn btn-secondary">Predict Multiple</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section">
+                <h2>✨ Chamber's Analysis</h2>
+                <div id="resultsContainer" class="results-container">
+                    <p class="placeholder">Enter a sequence to see the chamber's analysis...</p>
+                </div>
+            </section>
+
+            <!-- Examples Section -->
+            <section class="examples-section">
+                <h2>🔮 Example Sequences</h2>
+                <div class="examples-grid">
+                    <button class="example-btn" data-sequence="3, 6, 9, 12">
+                        <span class="example-sequence">[3, 6, 9, 12]</span>
+                        <span class="example-result">→ 15</span>
+                    </button>
+                    <button class="example-btn" data-sequence="2, 4, 6, 8">
+                        <span class="example-sequence">[2, 4, 6, 8]</span>
+                        <span class="example-result">→ 10</span>
+                    </button>
+                    <button class="example-btn" data-sequence="10, 7, 4, 1">
+                        <span class="example-sequence">[10, 7, 4, 1]</span>
+                        <span class="example-result">→ -2</span>
+                    </button>
+                    <button class="example-btn" data-sequence="5, 5, 5, 5">
+                        <span class="example-sequence">[5, 5, 5, 5]</span>
+                        <span class="example-result">→ 5</span>
+                    </button>
+                    <button class="example-btn" data-sequence="-5, -3, -1, 1">
+                        <span class="example-sequence">[-5, -3, -1, 1]</span>
+                        <span class="example-result">→ 3</span>
+                    </button>
+                    <button class="example-btn" data-sequence="100, 90, 80, 70">
+                        <span class="example-sequence">[100, 90, 80, 70]</span>
+                        <span class="example-result">→ 60</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Memory Section -->
+            <section class="memory-section">
+                <div class="memory-header">
+                    <h2>📚 Chamber Memory</h2>
+                    <button id="clearMemoryBtn" class="btn btn-danger btn-sm">Clear Memory</button>
+                </div>
+                <div id="memoryContainer" class="memory-container">
+                    <p class="placeholder">No echoes recorded yet...</p>
+                </div>
+                <div class="memory-stats" id="memoryStats">
+                    <span>Total Echoes: <strong>0</strong></span>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>✨ May the patterns guide your path! ✨</p>
+            <p>Chamber of Echoes v1.0.0</p>
+        </footer>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>The chamber is thinking...</p>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification" class="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
